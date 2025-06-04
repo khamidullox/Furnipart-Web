@@ -1,0 +1,87 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+:root {
+  --color-primary-black: #373a36;
+  --color-secondary-black: #3d3935;
+  --color-primary-yellow: #ffc600;
+  --color-secondary-red: #da291c;
+}
+@font-face {
+  font-family: "Square721Bold";
+  src: url("./assets/font/square721bdexbtrusbyme_bold.otf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+body {
+  font-family: "Square721Bold";
+  color: var(--color-primary-black);
+  width: 100%;
+  height: 100vh;
+}
+@layer components {
+  .aligen-content {
+    @apply max-w-7xl m-auto px-5;
+  }
+}
+
+.bg-primary-yellow {
+  background-color: var(--color-primary-yellow);
+}
+.bg-secondary-red {
+  background-color: var(--color-secondary-red);
+}
+@layer utilities {
+  .animation-delay-2s {
+    animation-delay: 2s;
+  }
+}
+.discount-badge {
+  clip-path: polygon(
+    10% 0%,
+    20% 10%,
+    30% 0%,
+    40% 10%,
+    50% 0%,
+    60% 10%,
+    70% 0%,
+    80% 10%,
+    90% 0%,
+    100% 10%,
+    100% 90%,
+    90% 100%,
+    80% 90%,
+    70% 100%,
+    60% 90%,
+    50% 100%,
+    40% 90%,
+    30% 100%,
+    20% 90%,
+    10% 100%,
+    0% 90%,
+    0% 10%
+  );
+}
+@keyframes shake {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  20% {
+    transform: translate(-3px, 2px);
+  }
+  40% {
+    transform: translate(3px, -2px);
+  }
+  60% {
+    transform: translate(-2px, 3px);
+  }
+  80% {
+    transform: translate(2px, -3px);
+  }
+}
+
+.test-shake {
+  animation: shake 1s ease-in-out infinite;
+}
