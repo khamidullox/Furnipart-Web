@@ -85,3 +85,23 @@ body {
 .test-shake {
   animation: shake 1s ease-in-out infinite;
 }
+
+@media (prefers-color-scheme: dark) {
+  body {
+    color: white; /* или другой светлый цвет для текста */
+  }
+
+  .bg-primary-yellow {
+    background-color: var(
+      --color-primary-yellow
+    ); /* немного мягче на тёмном фоне */
+  }
+
+  .bg-secondary-red {
+    background-color: #ff4d4d;
+  }
+
+  .aligen-content {
+    color: white; /* Текст в темной теме */
+  }
+}
