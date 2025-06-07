@@ -2,9 +2,9 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 //Layout
 import MainLayout from "./layout/MainLayout";
-import Home from "./page/Home";
-import Error from "./page/Error";
-import Sale from "./page/Sale";
+// import Error from "./page/Error";
+
+import { Error, Sale, PageSingl, Home, CreateProduct } from "./page";
 //pages
 
 // redux
@@ -24,6 +24,14 @@ function App() {
         {
           path: "/sale",
           element: <Sale />,
+        },
+        {
+          path: "/createProduct",
+          element: <CreateProduct />,
+        },
+        {
+          path: "/:id",
+          element: <PageSingl />,
         },
       ],
     },

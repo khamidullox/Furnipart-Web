@@ -1,6 +1,6 @@
 import React from "react";
 import dataBase from "../../public/data/dataBase";
-import { Link } from "react-router-dom";
+import { HomeListCard } from "../components";
 
 function Home() {
   return (
@@ -30,24 +30,7 @@ function Home() {
       </div>
       <div className="grid md:grid-cols-3 grid-cols-2 items-center justify-center gap-10 ">
         {dataBase.homepageList.map((item, id) => {
-          return (
-            <Link
-              to={item.url}
-              id="id"
-              className="card md:flex-row  bg-base-100 w-full md:h-32 h-full  md:p-2 p-0.5 shadow-sm items-center md:gap-5 gap-2 hover:shadow-xl transition-shadow border-1 hover:border-amber-400"
-            >
-              <figure>
-                <img
-                  src={item.img}
-                  alt="Shoes"
-                  className="lg:size-24 size-16 "
-                />
-              </figure>
-              <div className="">
-                <h2 className="card-titl md:text-xl text-sm ">{item.title}</h2>
-              </div>
-            </Link>
-          );
+          return <HomeListCard key={id} item={item} id={id} />;
         })}
       </div>
     </div>

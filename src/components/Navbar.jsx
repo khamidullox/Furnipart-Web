@@ -20,14 +20,14 @@ function Navbar() {
             </span>
           </div>
         </div>
-        <d className="navbar-end">
+        <div className="navbar-end">
           <Link
             to="/sale"
             className="bg-secondary-red lg:p-4 md:p-3 p-1.5 text-white discount-badge test-shake"
           >
             <h2 className="">Chegirma</h2>
           </Link>
-        </d>
+        </div>
       </div>
     </header>
   );
