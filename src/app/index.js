@@ -1,9 +1,6 @@
-export let fromatPrice = (price) => {
-  let newFormat = new Intl.NumberFormat("uz-UZ", {
-    currency: "USD",
-    style: "currency",
-  }).format(price);
-  return newFormat;
+export const fromatPrice = (price) => {
+  if (!price) return "0";
+  return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 };
 
 export function filterCategor(data, params) {

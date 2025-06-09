@@ -9,16 +9,22 @@ function Navbar() {
           <Link to="/">
             <img src="/logo.png" alt="Logo" className="size-16" />
           </Link>
-        </div>
-        <div className="navbar-center ">
-          <div className="">
+          <Link to="/" className="">
             <span className="text-white flex flex-col justify-center items-center lg:text-4xl text-xl">
               Furnipart
             </span>{" "}
             <span className="lg:text-lg text-black md:flex hidden">
               mebel aksessuarlari
             </span>
-          </div>
+          </Link>
+        </div>
+        <div className="navbar-center ">
+          <Link
+            to="/all"
+            className=" md:text-xl text-sm link hover:text-white w-16 md:w-full"
+          >
+            Barcha mahsulotlar
+          </Link>
         </div>
         <div className="navbar-end">
           <Link

@@ -1,9 +1,10 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 
-function SelectCategory({ option, name, lebal, type, plecholder }) {
+function SelectCategory({ option, name, lebal, value, onChange }) {
   const [form, setForm] = useState({
     name: "",
   });
+
   const handleChange = (event) => {
     setForm({ name: event.target.value });
   };
@@ -13,22 +14,16 @@ function SelectCategory({ option, name, lebal, type, plecholder }) {
       <legend className="fieldset-legend">{lebal}</legend>
       <select
         name={name}
-        onChange={handleChange}
-        className="select w-96 font-light  text-xs  "
+        onChange={onChange}
+        value={value}
+        className="select md:w-96 w-64 font-light text-xs"
       >
-        {option.homepageList.map((item, id) => {
-          return (
-            <option
-              className="font-light text-xs "
-              key={id}
-              defaultValue={item.url}
-            >
-              {item.title}
-            </option>
-          );
-        })}
+        {option.homepageList.map((item, id) => (
+          <option key={id} value={item.url} className="font-light text-xs">
+            {item.title}
+          </option>
+        ))}
       </select>
-      {/* <span className="label">Optional</span> */}
     </fieldset>
   );
 }

@@ -10,6 +10,7 @@ import { Error, Sale, PageSingl, Home, CreateProduct } from "./page";
 // redux
 
 //action
+import { action as actionCreateProduct } from "./page/CreateProduct";
 function App() {
   let router = createBrowserRouter([
     {
@@ -28,6 +29,7 @@ function App() {
         {
           path: "/createProduct",
           element: <CreateProduct />,
+          action: actionCreateProduct,
         },
         {
           path: "/:id",

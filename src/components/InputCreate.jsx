@@ -1,17 +1,26 @@
-import React from "react";
-
-function InputCreate({ name, lebal, type, plecholder }) {
+function InputCreate({
+  name,
+  lebal,
+  type,
+  plecholder,
+  classInput,
+  checkbox,
+  value,
+  onChange,
+}) {
   return (
-    <fieldset className="fieldset  ">
-      <legend className="fieldset-legend ">{lebal}</legend>
+    <fieldset className="fieldset">
+      <legend className="fieldset-legend">{lebal}</legend>
       <input
+        disabled={checkbox}
         name={name}
         type={type}
-        className={`input w-96 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none`}
+        value={value}
+        onChange={onChange}
+        className={`input ${classInput} [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none`}
         placeholder={plecholder}
-        autoComplete="off"
+        // autoComplete="off"
       />
-      {/* <p className="label">Optional</p> */}
     </fieldset>
   );
 }
