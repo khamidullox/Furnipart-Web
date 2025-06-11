@@ -30,9 +30,7 @@ function CreateProduct() {
 
   useEffect(() => {
     if (productDate) {
-      for (let i = 0; i < 5; i++) {
-        createProduct(productDate);
-      }
+      createProduct(productDate);
 
       // Сброс формы
       setFormData({
