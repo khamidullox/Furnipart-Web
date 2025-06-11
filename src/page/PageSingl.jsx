@@ -7,6 +7,7 @@ import { filterCategor } from "../app/index";
 function PageSingl() {
   let { data } = useCollection("products");
   let { id: idParams } = useParams();
+  
 
   return (
     <div className="py-6">

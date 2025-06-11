@@ -19,7 +19,7 @@ function InputCreate({
         onChange={onChange}
         className={`input ${classInput} [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none`}
         placeholder={plecholder}
-        // autoComplete="off"
+        autoComplete="off"
       />
     </fieldset>
   );

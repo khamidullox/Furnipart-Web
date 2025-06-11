@@ -4,13 +4,21 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import MainLayout from "./layout/MainLayout";
 // import Error from "./page/Error";
 
-import { Error, Sale, PageSingl, Home, CreateProduct } from "./page";
+import {
+  Error,
+  Sale,
+  PageSingl,
+  Home,
+  CreateProduct,
+  ChangeDataProduct,
+} from "./page";
 //pages
 
 // redux
 
 //action
 import { action as actionCreateProduct } from "./page/CreateProduct";
+
 function App() {
   let router = createBrowserRouter([
     {
@@ -34,6 +42,10 @@ function App() {
         {
           path: "/:id",
           element: <PageSingl />,
+        },
+        {
+          path: "/changeProduct",
+          element: <ChangeDataProduct />,
         },
       ],
     },

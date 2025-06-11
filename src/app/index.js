@@ -6,7 +6,7 @@ export const fromatPrice = (price) => {
 export function filterCategor(data, params) {
   if (data) {
     let filter = data.filter((product) => {
-      if (params == "all") {
+      if (params == "all" ) {
         return data;
       }
       return product.category == params;

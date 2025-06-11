@@ -19,7 +19,7 @@ function ModalCreate({ dataProduct }) {
           <PageSingleCard item={dataProduct} />
           <div className="modal-action">
             <form method="dialog">
-              <button className="btn btn-info">Jonatish</button>
+              <button className="btn btn-primary">Qaytish</button>
             </form>
           </div>
         </div>
