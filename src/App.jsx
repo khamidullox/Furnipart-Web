@@ -11,6 +11,7 @@ import {
   Home,
   CreateProduct,
   ChangeDataProduct,
+  SingleProdcutPage,
 } from "./page";
 //pages
 
@@ -46,6 +47,10 @@ function App() {
         {
           path: "/changeProduct",
           element: <ChangeDataProduct />,
+        },
+        {
+          path: "/product/:idP",
+          element: <SingleProdcutPage />,
         },
       ],
     },

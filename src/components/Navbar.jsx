@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 
 function Navbar() {
   return (
-    <header className="bg-primary-yellow">
-      <div className="navbar bg-base-100  px-5 aligen-content bg-primary-yellow">
-        <div className="sm:navbar-start">
+    <header className="bg-primary-yellow md:px-16">
+      <div className="navbar bg-base-100 bg-primary-yellow">
+        <div className="navbar-start">
           <Link to="/">
-            <img src="/logo.png" alt="Logo" className="size-16" />
+            <img src="/logo.png" alt="Logo" className="size-16 " />
           </Link>
           <Link to="/" className="">
             <span className="text-white flex flex-col justify-center items-center lg:text-4xl text-xl">
@@ -18,10 +18,10 @@ function Navbar() {
             </span>
           </Link>
         </div>
-        <div className="navbar-center ">
+        <div className="navbar-center md:flex hidden ">
           <Link
             to="/all"
-            className=" md:text-xl text-sm link hover:text-white w-16 md:w-full"
+            className=" md:text-xl  text-sm link hover:text-white w-16 md:w-full"
           >
             Barcha mahsulotlar
           </Link>

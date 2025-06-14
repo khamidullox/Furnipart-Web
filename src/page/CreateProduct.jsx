@@ -26,6 +26,7 @@ function CreateProduct() {
     sale: false,
     salePrice: "",
     category: "",
+    amoutProduct: "",
   });
 
   useEffect(() => {
@@ -42,6 +43,7 @@ function CreateProduct() {
         sale: false,
         salePrice: "",
         category: "",
+        amoutProduct: "",
       });
     }
   }, [productDate]);
@@ -112,6 +114,15 @@ function CreateProduct() {
             type="number"
             plecholder="Misol: 15000"
             value={formData.price}
+            onChange={handleChange}
+          />
+          <InputCreate
+            classInput="md:w-96"
+            name="amoutProduct"
+            lebal="Miqdori"
+            type="number"
+            plecholder="Misol: 10"
+            value={formData.amoutProduct}
             onChange={handleChange}
           />
           <div className="flex md:gap-5 gap-2 items-center justify-center">

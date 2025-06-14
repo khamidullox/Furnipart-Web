@@ -7,7 +7,6 @@ import { filterCategor } from "../app/index";
 function PageSingl() {
   let { data } = useCollection("products");
   let { id: idParams } = useParams();
-  
 
   return (
     <div className="py-6">
@@ -20,7 +19,11 @@ function PageSingl() {
       <div className="grid md:grid-cols-3 grid-cols-2 items-center justify-center gap-10 ">
         {data &&
           filterCategor(data, idParams).map((item, id) => {
-            return <PageSingleCard key={id} item={item} id={id} />;
+            return (
+              <Link key={id} to={`/product/${item.id}`}>
+                <PageSingleCard item={item} id={id} />
+              </Link>
+            );
           })}
       </div>
       {!data && <Loading />}

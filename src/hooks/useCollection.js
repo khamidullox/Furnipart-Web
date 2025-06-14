@@ -27,7 +27,7 @@ export let useCollection = (collectionName) => {
         querySnapshot.forEach((doc) => {
           data.push({ id: doc.id, ...doc.data() });
         });
-        setData(data);
+        setData(data.reverse());
       });
     }
   }, [collectionName]);
