@@ -20,7 +20,13 @@ function PageSingl() {
         {data &&
           filterCategor(data, idParams).map((item, id) => {
             return (
-              <Link key={id} to={`/product/${item.id}`}>
+              <Link
+                className={`${
+                  item.amoutProduct > 0 ? "" : "pointer-events-none"
+                } `}
+                key={id}
+                to={`/product/${item.id}`}
+              >
                 <PageSingleCard item={item} id={id} />
               </Link>
             );

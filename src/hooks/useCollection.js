@@ -8,10 +8,10 @@ import {
   addDoc,
   serverTimestamp,
 } from "firebase/firestore";
-
-import { db } from "../firebase/firebseConfig";
-import { showLoading } from "react-global-loading";
+import { doc, updateDoc } from "firebase/firestore";
 import toast from "react-hot-toast";
+import { showLoading } from "react-global-loading";
+import { db } from "../firebase/firebseConfig";
 export let useCollection = (collectionName) => {
   let [data, setData] = useState(null);
 
@@ -55,4 +55,27 @@ export let useCreate = () => {
   };
 
   return { createProduct };
+};
+export const useUpdate = () => {
+  const updateProduct = async (id, updatedData) => {
+    if (!id) return;
+
+    try {
+      showLoading(true);
+      const productRef = doc(db, "products", id);
+
+      await updateDoc(productRef, {
+        ...updatedData,
+        updatedAt: new Date(),
+      });
+
+      toast.success(`Mahsulot "${updatedData.name}" yangilandi`);
+    } catch (error) {
+      toast.error("Xatolik yuz berdi: " + error.message);
+    } finally {
+      showLoading(false);
+    }
+  };
+
+  return { updateProduct };
 };

@@ -1,64 +1,148 @@
-import React, { useEffect, useState } from "react";
-import { fromatPrice } from "../app/index";
+import React, { useState, useEffect } from "react";
+import InputCreate from "./InputCreate";
+import { useUpdate } from "../hooks/useCollection";
 
-function ChangeProductModal({ data, id }) {
-  const filtered = data?.filter((item) => item.id === id);
+function ChangeProductModal({ data, id, onSubmit }) {
+  const [formData, setFormData] = useState({
+    name: "",
+    description: "",
+    img: "",
+    price: "",
+    idP: "",
+    sale: false,
+    salePrice: "",
+    category: "",
+    amoutProduct: "",
+  });
+  const { updateProduct } = useUpdate();
+  const filtered = data?.find((item) => item.id === id);
+
+  useEffect(() => {
+    if (filtered) {
+      setFormData({ ...filtered });
+    }
+  }, [filtered]);
+
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: type === "checkbox" ? checked : value,
+    }));
+  };
+
+  const handleSubmit = (e) => {
+      e.preventDefault();
+    if (formData.id) {
+      console.log(formData);
+      updateProduct(formData.id, formData); // id = Firestore doc.id
+    }
+  };
 
   return (
     <dialog id="my_modal_3" className="modal">
       <div className="modal-box">
-        <div>
-          {" "}
-          {filtered.map((item) => (
-            <div
-              key={item.id}
-              className="card md:flex-row bg-base-100 w-full h-full md:p-5 p-2 pb-2 shadow-sm items-center md:gap-5 gap-2"
-            >
-              <figure className="w-40">
-                <img
-                  src={item.img}
-                  alt={item.name}
-                  className="lg:size-28 size-16"
-                />
-              </figure>
-              <div className="flex flex-col w-full gap-1 md:items-baseline items-center justify-center">
-                <h2 className="car-title text-xl text-center">
-                  {item.name}
-                  {item.sale && (
-                    <div className="badge bg-secondary-red text-white ml-2 text-xs">
-                      Chegirma
-                    </div>
-                  )}
-                </h2>
-                <p className="text-sm opacity-80 text-center md:text-start">
-                  * {item.description}
-                </p>
-                <div className="card-action w-full flex lg:flex-row flex-col text-sm gap-2 md:items-end items-center justify-end">
-                  <div
-                    className={`badg badg-outline ${
-                      item.sale ? "line-through opacity-40 text-xs" : ""
-                    }`}
-                  >
-                    {fromatPrice(item.price)} UZS
-                  </div>
-                  {item.sale && (
-                    <div className="badg badg-outline text-red-600">
-                      {fromatPrice(item.salePrice)} UZS
-                    </div>
-                  )}
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-        <div className="modal-action">
-          <form method="dialog">
-            <button className="btn btn-info">Jonatish</button>
-          </form>
-        </div>
+        <form onSubmit={handleSubmit} className="flex flex-col ">
+          {formData.img && (
+            <figure className="flex items-center w-full">
+              <img className="md:w-full md:h-78" src={formData.img} alt="" />
+            </figure>
+          )}
+
+          <InputCreate
+            type="text"
+            name="name"
+            lebal="Mahsulot nomi"
+            plecholder="Misol: Samarez"
+            value={formData.name}
+            onChange={handleChange}
+            classInput="w-full"
+          />
+
+          <InputCreate
+            type="text"
+            name="description"
+            lebal="Tavsif"
+            plecholder="Misol: Yashil, 2sm"
+            value={formData.description}
+            onChange={handleChange}
+            classInput="w-full"
+          />
+
+          <InputCreate
+            type="text"
+            name="img"
+            lebal="Rasm URL"
+            plecholder="Misol: https://example.com"
+            value={formData.img}
+            onChange={handleChange}
+            classInput="w-full"
+          />
+
+          <InputCreate
+            type="number"
+            name="price"
+            lebal="Narxi"
+            plecholder="Misol: 15000"
+            value={formData.price}
+            onChange={handleChange}
+            classInput="w-full"
+          />
+
+          <InputCreate
+            type="text"
+            name="idP"
+            lebal="Mahsulot ID"
+            plecholder="0001"
+            value={formData.idP}
+            onChange={handleChange}
+            classInput="w-full"
+          />
+
+          <InputCreate
+            type="number"
+            name="amoutProduct"
+            lebal="Qoldiq soni"
+            plecholder="Misol: 10"
+            value={formData.amoutProduct}
+            onChange={handleChange}
+            classInput="w-full"
+          />
+
+          <InputCreate
+            type="number"
+            name="salePrice"
+            lebal="Chegirma narxi"
+            plecholder="Misol: 12000"
+            value={formData.salePrice}
+            onChange={handleChange}
+            classInput="w-full"
+            checkbox={!formData.sale}
+          />
+          <div className="form-control flex flex-row gap-2 items-center">
+            <label className="label cursor-pointer">
+              <span className="label-text">Chegirma mavjudmi?</span>
+            </label>
+            <input
+              type="checkbox"
+              name="sale"
+              checked={formData.sale}
+              onChange={handleChange}
+              className="checkbox"
+            />
+          </div>
+          <div className="modal-action">
+            <button type="submit" className="btn btn-info ">
+              Yangilash
+            </button>
+            <form method="dialog">
+              <button className="btn w-full">Bekor qilish</button>
+            </form>
+          </div>
+        </form>
       </div>
       <form method="dialog" className="modal-backdrop">
-        <button>close</button>
+        <button>Yopish</button>
       </form>
     </dialog>
   );

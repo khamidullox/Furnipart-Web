@@ -118,7 +118,15 @@ function SearchHome() {
               </figure>
               <div className="flex flex-col gap-2">
                 <div className="font-medium text-gray-800">{item.name}</div>
-                <div className="text-xs text-gray-500">{item.idP}</div>
+                <div className="text-xs text-gray-500">
+                  {" "}
+                  {item.sale && (
+                    <div className="  badge bg-secondary-red text-white ml-2 text-xs discount-badge ">
+                      Chegirma
+                    </div>
+                  )}
+                  {item.idP}
+                </div>
               </div>
             </li>
           ))}

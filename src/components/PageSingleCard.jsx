@@ -4,7 +4,6 @@ import { fromatPrice } from "../app/index";
 function PageSingleCard({ item, id }) {
   return (
     <div
-      key={id ? id : Math.random()}
       className={` card md:flex-row  bg-base-100 w-full lg:h-full h-full  md:p-5 p-2 ${
         item.amoutProduct <= 0 ? "  opacity-30  " : "hover:shadow-xl"
       } pb-2 shadow-sm items-center md:gap-5 gap-2  transition-shadow border-1 hover:border-amber-400 relative`}
