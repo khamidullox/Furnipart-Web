@@ -1,7 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import { AiOutlineShoppingCart } from "react-icons/ai";
+import { useSelector } from "react-redux";
 function Navbar() {
+  const { product } = useSelector((state) => state.cart);
+  console.log(product);
   return (
     <header className="bg-primary-yellow md:px-16">
       <div className="navbar bg-base-100 bg-primary-yellow">
@@ -26,7 +29,16 @@ function Navbar() {
             Barcha mahsulotlar
           </Link>
         </div>
-        <div className="navbar-end">
+        <div className="navbar-end gap-5">
+          <Link
+            className="btn btn-circle text-3xl relative size-12 "
+            to="/cart"
+          >
+            <AiOutlineShoppingCart className="" />
+            <span className=" absolute text-sm -top-1 px-1 bg-red-600 text-white rounded-full -left-2">
+              {product.length}
+            </span>
+          </Link>
           <Link
             to="/sale"
             className="bg-secondary-red lg:p-4 md:p-3 p-1.5 text-white discount-badge test-shake"

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import InputCreate from "./InputCreate";
-import { useUpdate } from "../hooks/useCollection";
+import { useUpdate, useDelete } from "../hooks/useCollection";
 
-function ChangeProductModal({ data, id, onSubmit }) {
+function ChangeProductModal({ data, id }) {
   const [formData, setFormData] = useState({
     name: "",
     description: "",
@@ -14,7 +14,10 @@ function ChangeProductModal({ data, id, onSubmit }) {
     category: "",
     amoutProduct: "",
   });
+
   const { updateProduct } = useUpdate();
+  const { deleteProduct } = useDelete();
+
   const filtered = data?.find((item) => item.id === id);
 
   useEffect(() => {
@@ -31,18 +34,25 @@ function ChangeProductModal({ data, id, onSubmit }) {
     }));
   };
 
-  const handleSubmit = (e) => {
-      e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     if (formData.id) {
-      console.log(formData);
-      updateProduct(formData.id, formData); // id = Firestore doc.id
+      await updateProduct(formData.id, formData);
+      document.getElementById("my_modal_3").close(); // Закрываем модалку
+    }
+  };
+
+  const handleDelete = async () => {
+    if (formData.id && confirm("Rostdan ham o‘chirmoqchimisiz?")) {
+      await deleteProduct(formData.id);
+      document.getElementById("my_modal_3").close(); // Закрываем модалку
     }
   };
 
   return (
     <dialog id="my_modal_3" className="modal">
       <div className="modal-box">
-        <form onSubmit={handleSubmit} className="flex flex-col ">
+        <form onSubmit={handleSubmit} className="flex flex-col">
           {formData.img && (
             <figure className="flex items-center w-full">
               <img className="md:w-full md:h-78" src={formData.img} alt="" />
@@ -73,7 +83,7 @@ function ChangeProductModal({ data, id, onSubmit }) {
             type="text"
             name="img"
             lebal="Rasm URL"
-            plecholder="Misol: https://example.com"
+            plecholder="https://rasm.uz"
             value={formData.img}
             onChange={handleChange}
             classInput="w-full"
@@ -119,6 +129,7 @@ function ChangeProductModal({ data, id, onSubmit }) {
             classInput="w-full"
             checkbox={!formData.sale}
           />
+
           <div className="form-control flex flex-row gap-2 items-center">
             <label className="label cursor-pointer">
               <span className="label-text">Chegirma mavjudmi?</span>
@@ -131,12 +142,20 @@ function ChangeProductModal({ data, id, onSubmit }) {
               className="checkbox"
             />
           </div>
-          <div className="modal-action">
-            <button type="submit" className="btn btn-info ">
+
+          <div className="modal-action flex flex-wrap gap-2">
+            <button type="submit" className="btn btn-info">
               Yangilash
             </button>
+            <button
+              type="button"
+              onClick={handleDelete}
+              className="btn btn-error"
+            >
+              O‘chirish
+            </button>
             <form method="dialog">
-              <button className="btn w-full">Bekor qilish</button>
+              <button className="btn">Bekor qilish</button>
             </form>
           </div>
         </form>

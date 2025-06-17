@@ -3,6 +3,7 @@ import {
   collection,
   query,
   where,
+  deleteDoc,
   onSnapshot,
   orderBy,
   addDoc,
@@ -78,4 +79,18 @@ export const useUpdate = () => {
   };
 
   return { updateProduct };
+};
+
+export const useDelete = () => {
+  const deleteProduct = async (id) => {
+    try {
+      await deleteDoc(doc(db, "products", id));
+      toast.success("Mahsulot o‘chirildi");
+    } catch (error) {
+      toast.error("O‘chirishda xatolik yuz berdi");
+      console.error(error);
+    }
+  };
+
+  return { deleteProduct };
 };

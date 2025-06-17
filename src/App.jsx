@@ -12,6 +12,7 @@ import {
   CreateProduct,
   ChangeDataProduct,
   SingleProdcutPage,
+  Cart,
 } from "./page";
 //pages
 
@@ -51,6 +52,10 @@ function App() {
         {
           path: "/product/:idP",
           element: <SingleProdcutPage />,
+        },
+        {
+          path: "/cart",
+          element: <Cart />,
         },
       ],
     },

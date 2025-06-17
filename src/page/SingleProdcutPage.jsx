@@ -3,12 +3,14 @@ import { Link, useParams } from "react-router-dom";
 import { useCollection } from "../hooks/useCollection";
 import { fromatPrice } from "../app/index";
 import { RecProductCategory } from "../components";
+import { useDispatch } from "react-redux";
+import { addProduct } from "../app/cartSlice";
 
 function SingleProdcutPage() {
   let { idP } = useParams();
   let { data } = useCollection("products");
   let newData = data?.filter((item) => item.id == idP);
-
+  const dispatch = useDispatch();
   return (
     newData &&
     newData.map((item) => {
@@ -68,7 +70,7 @@ function SingleProdcutPage() {
                   )}
                 </div>
 
-                <div className="">
+                <div onClick={() => dispatch(addProduct(item))}>
                   <button class="btn btn-accent rounded-4xl">Savatga</button>
                 </div>
               </div>
