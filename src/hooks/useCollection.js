@@ -43,6 +43,7 @@ export let useCreate = () => {
       !(newData.img == "") &&
       !(newData.price == "")
     ) {
+      console.log(6);
       showLoading(true);
       addDoc(collection(db, "products"), {
         ...newData,

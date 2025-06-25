@@ -2,6 +2,9 @@ import React, { useState, useRef, useEffect } from "react";
 import { CiMenuFries } from "react-icons/ci";
 import { Link, useNavigate } from "react-router-dom";
 import { useCollection } from "../hooks/useCollection";
+import { FaInstagram } from "react-icons/fa";
+import { BsTelephone } from "react-icons/bs";
+import { MdOutlineFeaturedPlayList } from "react-icons/md";
 
 function SearchHome() {
   const { data } = useCollection("products");
@@ -143,8 +146,27 @@ function SearchHome() {
           className="dropdown-content menu bg-base-100 rounded-box z-10 w-52 p-2 mt-10 shadow-sm"
         >
           <li>
-            <Link to="/all" className="text-xs text-red-800">
-              Barcha mahsulotlar
+            <Link to="/all" className="text-xs link link-hover-">
+              <MdOutlineFeaturedPlayList />
+              <span>Barcha mahsulotlar</span>
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="https://www.instagram.com/furnipart_uz/"
+              target="_blank"
+              className="text-xs link link-"
+            >
+              <FaInstagram /> <span>Instagram</span>
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="tel:998911249000"
+              target="_blank"
+              className="text-xs link link-"
+            >
+              <BsTelephone /> <span>91 124 90 00</span>
             </Link>
           </li>
         </ul>

@@ -34,17 +34,6 @@ function CreateProduct() {
       createProduct(productDate);
 
       // Сброс формы
-      setFormData({
-        name: "",
-        description: "",
-        img: "",
-        price: "",
-        idP: "",
-        sale: false,
-        salePrice: "",
-        category: "",
-        amoutProduct: "",
-      });
     }
   }, [productDate]);
 

@@ -7,7 +7,7 @@ function MainLayout() {
     <>
       <Navbar />
       {/* aligen-content */}
-      <main className="aligen-content  ">
+      <main className="aligen-content mt-20">
         <picture>
           <source
             srcSet="/bg-logo-dark.png"
