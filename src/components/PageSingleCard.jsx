@@ -1,5 +1,5 @@
 import React from "react";
-import { fromatPrice } from "../app/index";
+import { fromatPrice } from "../app/format";
 
 function PageSingleCard({ item, id }) {
   return (

@@ -13,6 +13,7 @@ import {
   ChangeDataProduct,
   SingleProdcutPage,
   Cart,
+  ZakazaProduct,
 } from "./page";
 //pages
 
@@ -56,6 +57,10 @@ function App() {
         {
           path: "/cart",
           element: <Cart />,
+        },
+        {
+          path: "/zakazlar",
+          element: <ZakazaProduct />,
         },
       ],
     },

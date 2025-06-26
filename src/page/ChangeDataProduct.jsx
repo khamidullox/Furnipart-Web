@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useCollection } from "../hooks/useCollection";
-import { fromatPrice } from "../app/index";
+import { fromatPrice } from "../app/format";
 import { Link } from "react-router-dom";
 import ChangeProductModal from "../components/ChangeProductModal";
 

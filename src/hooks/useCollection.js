@@ -95,3 +95,30 @@ export const useDelete = () => {
 
   return { deleteProduct };
 };
+export const useOrder = () => {
+  const sendOrder = async ({ name, phone, products, totalPrice }) => {
+    if (!name || !phone || products.length === 0) {
+      toast.error("Iltimos, barcha maydonlarni to‘ldiring");
+      return;
+    }
+
+    try {
+      showLoading(true);
+      await addDoc(collection(db, "orders"), {
+        name,
+        phone,
+        products,
+        totalPrice,
+        createAt: serverTimestamp(),
+        status: "Yangi",
+      });
+      toast.success("Buyurtma yuborildi!");
+    } catch (error) {
+      toast.error("Xatolik: " + error.message);
+    } finally {
+      showLoading(false);
+    }
+  };
+
+  return { sendOrder };
+};

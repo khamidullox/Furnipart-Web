@@ -3,8 +3,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { MdDeleteOutline } from "react-icons/md";
 import { deleteProduct } from "../app/cartSlice"; // Убедись в правильности пути
 import { Link } from "react-router-dom";
-import { fromatPrice } from "../app/index";
+import { fromatPrice } from "../app/format";
 import CartModal from "../components/CartModal";
+import OrdersHistory from "../components/OrdersHistory";
 
 function Cart() {
   const dispatch = useDispatch();
@@ -16,7 +17,9 @@ function Cart() {
   );
 
   const totalPrice = product.reduce((sum, item) => {
-    const price = item.sale ? Number(item.salePrice) : Number(item.price);
+    const price = item.sale
+      ? fromatPrice(item.salePrice)
+      : fromatPrice(item.price);
     return sum + price * (item.amoutProduct || 1);
   }, 0);
 
@@ -24,7 +27,7 @@ function Cart() {
     <div className="py-8 px-2 md:px-8 ">
       {/* 💻 Desktop Table */}
       <div className="overflow-x-auto glass rounded-2xl p-1 md:block hidden">
-        <table className="table md:text-sm">
+        <table className="table md:text-sm text-xs">
           <thead>
             <tr>
               <th>Nomi</th>
@@ -40,11 +43,11 @@ function Cart() {
                 <td>
                   <div className="flex items-center gap-3">
                     <div className="avatar">
-                      <div className="mask h-12 w-12">
+                      <div className="mask  h-12 w-12">
                         <img src={item.img} alt={item.name} />
                       </div>
                     </div>
-                    <div>
+                    <div className="">
                       <div className="font-bold">{item.name}</div>
                       <div className="text-sm opacity-50">{item.idP}</div>
                     </div>
@@ -75,7 +78,7 @@ function Cart() {
               <th></th>
               <th></th>
               <th className="text-base font-semibold">
-                Jami: {fromatPrice(totalPrice)} UZS
+                Jami: {fromatPrice(totalPrice * 1000)} so'm
               </th>
               <th className="text-base font-semibold">Soni: {totalCount}</th>
               <th></th>
@@ -85,7 +88,7 @@ function Cart() {
       </div>
 
       {/* 📱 Mobile Cards */}
-      <div className="md:hidden flex flex-col gap-4">
+      <div className="md:hidden text-sm flex flex-col gap-4 relative">
         {product.map((item) => (
           <Link
             to={`/product/${item.id}`}
@@ -114,8 +117,12 @@ function Cart() {
               <span>Soni: {item.amoutProduct}</span>
             </div>
             <button
-              onClick={() => dispatch(deleteProduct(item.id))}
-              className="btn btn-error p-0 rounded-full pl-2 top-1 right-1 text-center absolute"
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                dispatch(deleteProduct(item.id));
+              }}
+              className="btn btn-error p-0 rounded-full z-50 pl-2 top-1 right-1 text-center absolute"
             >
               <MdDeleteOutline className="text-xl mr-2" />
             </button>
@@ -123,7 +130,7 @@ function Cart() {
         ))}
         <div className="text-right mt-4 font-semibold text-base">
           <p>Jami mahsulot: {totalCount} ta</p>
-          <p>Umumiy summa: {totalPrice} UZS</p>
+          <p> Jami: {fromatPrice(totalPrice * 1000)} so'm</p>
         </div>
       </div>
 
@@ -138,12 +145,14 @@ function Cart() {
           </button>
         </>
         <dialog id="my_modal_1" className="modal">
-          <CartModal products={product} />
+          <CartModal products={product} totalPrice={totalPrice} />
           <form method="dialog" className="modal-backdrop">
             <button>Yopish</button>
           </form>
         </dialog>
       </div>
+
+      <OrdersHistory />
     </div>
   );
 }

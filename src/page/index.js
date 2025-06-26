@@ -7,3 +7,4 @@ export { default as ChangeDataProduct } from "./ChangeDataProduct";
 export { default as ModalCreate } from "./ModalCreate";
 export { default as SingleProdcutPage } from "./SingleProdcutPage";
 export { default as Cart } from "./Cart";
+export { default as ZakazaProduct } from "./ZakazaProduct";

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
 import { useCollection } from "../hooks/useCollection";
-import { fromatPrice } from "../app/index";
+import { fromatPrice } from "../app/format";
 import { RecProductCategory } from "../components";
 import { useDispatch } from "react-redux";
 import { addProduct } from "../app/cartSlice";

@@ -1,10 +1,13 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 import Navbar from "../components/Navbar";
+import ScrollToTop from "../components/ScrollToTop";
 
 function MainLayout() {
   return (
     <>
+      {" "}
+      <ScrollToTop />
       <Navbar />
       {/* aligen-content */}
       <main className="aligen-content mt-20">

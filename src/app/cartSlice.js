@@ -2,11 +2,11 @@ import { createSlice } from "@reduxjs/toolkit";
 
 // Получение данных из localStorage
 const dataFromLocalStore = () => {
-  return (
-    JSON.parse(localStorage.getItem("cart")) || {
-      product: [],
-    }
-  );
+  const saved = JSON.parse(localStorage.getItem("cart")) || {};
+  return {
+    product: saved.product || [],
+    ordersProduct: saved.ordersProduct || [],
+  };
 };
 
 const initialState = dataFromLocalStore();
@@ -28,12 +28,15 @@ export const cartSlice = createSlice({
       localStorage.setItem("cart", JSON.stringify(state));
     },
 
-    decrement: (state) => {
-      // по желанию
+    ordersAddHistory: (state, { payload }) => {
+      state.product = [];
+      state.ordersProduct.push(payload);
+      localStorage.setItem("cart", JSON.stringify(state));
     },
   },
 });
 
-export const { addProduct, deleteProduct, decrement } = cartSlice.actions;
+export const { addProduct, deleteProduct, ordersAddHistory } =
+  cartSlice.actions;
 
 export default cartSlice.reducer;

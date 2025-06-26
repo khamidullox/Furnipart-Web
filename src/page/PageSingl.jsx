@@ -2,7 +2,7 @@ import React from "react";
 import { useCollection } from "../hooks/useCollection";
 import { Loading, PageSingleCard } from "../components";
 import { Link, useParams } from "react-router-dom";
-import { filterCategor } from "../app/index";
+import { filterCategor } from "../app/format";
 
 function PageSingl() {
   let { data } = useCollection("products");

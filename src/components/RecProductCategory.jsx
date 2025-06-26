@@ -1,6 +1,6 @@
 import React from "react";
 import { useCollection } from "../hooks/useCollection";
-import { filterCategor } from "../app/index";
+import { filterCategor } from "../app/format";
 import { Link } from "react-router-dom";
 import PageSingleCard from "./PageSingleCard";
 
