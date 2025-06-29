@@ -66,7 +66,7 @@ export default {
       img: "https://gtv-meridian.ru/upload/iblock/15a/3xcdwrvs2dw06wjqhz16szyv3vp1p1el/gpd01-001.JPG",
     },
     {
-      title: "Фантон ленталр",
+      title: "Фатон ленталр",
       url: "fanton-lentalar",
       img: "https://www.электрополис.рф/image/cache/catalog/files/image/SD-00028103-01-1200x800.jpg",
     },
@@ -99,6 +99,78 @@ export default {
       title: "Механизом кухня",
       url: "mehanizm-kuhnya",
       img: "https://kslux.uz/upload/iblock/344/rwcuro3qrgrjnojh1ngmctgixw69mwxp/155.jpg",
+    },
+
+    // 🆕 Добавленные категории
+    {
+      title: "Саляска",
+      url: "salyaska",
+      img: "https://shenavan.am/wp-content/uploads/2023/12/722676c6a0a511e8a08b704d7b2a6490_a6a226665c5811ee8c1d6045cb82ff1a.jpg",
+    },
+    {
+      title: "Тандем",
+      url: "tandem",
+      img: "https://antarion.by/upload/media_files_antarion/blum_media/pictures_blum_catalog/00000023822.JPG",
+    },
+    {
+      title: "Вешилка",
+      url: "veshilka",
+      img: "https://basket-12.wbbasket.ru/vol1909/part190910/190910636/images/c516x688/1.webp",
+    },
+    {
+      title: "Карго",
+      url: "kargo",
+      img: "https://kis.uz/cdn/shop/products/3104Y-02_1024x1024.jpg?v=1735982844ы",
+    },
+    {
+      title: "Starax механизмлар",
+      url: "starax-mexanizmlar",
+      img: "https://alkan.uz/wp-content/uploads/2023/07/s-3072-ub-a_govde.jpg",
+    },
+    {
+      title: "Muller механизмлар",
+      url: "muller-mexanizmlar",
+      img: "https://tdmspb.ru/upload/resize_cache/iblock/e89/600_600_140cd750bba9870f18aada2478b24840a/xlnu3dtyvnfosnu2ouq23kszue9609ev.webp",
+    },
+    {
+      title: "HiGold механизмлар",
+      url: "higold-mexanizmlar",
+      img: "https://img.waimaoniu.net/2093/2093-202205242346209003.png",
+    },
+    {
+      title: "Купе роликлар",
+      url: "kupe-roliklar",
+      img: "https://premial-furniture.ru/wp-content/uploads/2017/12/rolik-premial-br.jpg",
+    },
+    {
+      title: "Плинтус",
+      url: "plintus",
+      img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStqHJCWvBXvI5nBI_hEgI065ZJ_wJjO2NitwrE90IJqEVR4-Vsb4B9I6pt3hhXTXL_YLI&usqp=CAU",
+    },
+    {
+      title: "Голиқ қўш",
+      url: "goli-qosh",
+      img: "https://files.glotr.uz/company/000/026/416/products/2024/11/14/2024-11-14-16-57-10-616319-b60944f73638d3b586ca88c04087d86a.webp?_=ozauc",
+    },
+    {
+      title: "Голиқ апкиллат",
+      url: "goli-apkilat",
+      img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8_JhoCVhBgrd2Y5JKj3Un_a5Ff67kwB9m1gnR13iWvFEbITUC7C9nN08xvt5M-hcOy7Y&usqp=CAU",
+    },
+    {
+      title: "Стуллар",
+      url: "stullar",
+      img: "https://deephouse.pro/upload/resize_cache/iblock/137/vuqhhfpfkph2dw3hwlrmk6bcf72ck06w/1200_1200_0/stulchangumassivtika.jpg",
+    },
+    {
+      title: "Пуфик",
+      url: "pufik",
+      img: "https://images.uzum.uz/cvvl0uei4n37npaos2o0/t_product_540_high.jpg",
+    },
+    {
+      title: "Сверло / Метр",
+      url: "sverlo-metr",
+      img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQK9YCFHrDqoHEg7vCL0p4dSZdL8flt7P_UTA&s",
     },
   ],
 };

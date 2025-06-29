@@ -4,7 +4,7 @@ import { fromatPrice } from "../app/format";
 function PageSingleCard({ item, id }) {
   return (
     <div
-      className={` card md:flex-row  bg-base-100 w-full lg:h-full h-full  md:p-5 p-2 ${
+      className={` md:text-xl text-xs card md:flex-row  bg-base-100  w-full lg:h-full h-full  md:p-5 p-2 ${
         item.amoutProduct <= 0 ? "  opacity-30  " : "hover:shadow-xl"
       } pb-2 shadow-sm items-center md:gap-5 gap-2  transition-shadow border-1 hover:border-amber-400 relative`}
     >
@@ -15,7 +15,7 @@ function PageSingleCard({ item, id }) {
         </div>
       </figure>
       <div className=" flex flex-col w-full gap-3 md:items-baseline items-center justify-center">
-        <h2 className="car-title text-xl text-center">
+        <h2 className="car-title md:text-xl  text-center">
           {item.name}
           {item.sale && (
             <div className=" absolute right-0 top-0 badge bg-secondary-red text-white ml-2 text-xs discount-badge ">
@@ -23,7 +23,7 @@ function PageSingleCard({ item, id }) {
             </div>
           )}
         </h2>
-        <p className="text-sm opacity-80 text-center md:text-start">
+        <p className="md:text-sm opacity-80 text-center md:text-start">
           * {item.description}
         </p>
 
