@@ -14,7 +14,7 @@ function OrdersHistory() {
           return (
             <div
               key={ID}
-              className="ard bg-bas-200 rounded-2xl glass py-5 w-full shadow-sm"
+              className="ard bg-bas-200 rounded-2xl glass bg-base-300 py-5 w-full shadow-sm opacity-70"
             >
               <figure className="flex pl-5 items- w-full justify-start gap-5 flex-wrap             ">
                 {item.products.map((img) => {
@@ -24,13 +24,13 @@ function OrdersHistory() {
                 })}
               </figure>
               <div className=" md:text-sm text-xs flex flex-col gap-1 px-5 pt-2">
-                <div className=" flex items-center gap-2">
+                <div className=" flex items-center gap-2 text-wrap flex-wrap">
                   <h2 className="card-titl">{item.name}</h2>
-                  <p>({item.phone})</p>
+                  <p className="text-wrap">({item.phone})</p>
                 </div>
                 <div className="">
                   <div className="badge badge-outline">
-                    {fromatPrice(item.totalPrice * 1000)} so'm
+                    {fromatPrice(item.totalPrice * 1000)}
                   </div>
                   {/* <div className="badge badge-outline"></div> */}
                 </div>

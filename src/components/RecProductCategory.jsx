@@ -10,7 +10,7 @@ function RecProductCategory({ category, data }) {
       <div>
         <h3 className="text-xl p-5">Shunga o'xshash:</h3>
       </div>
-      <div className="grid md:grid-cols-3 grid-cols-2 items-center justify-center gap-10 px-4">
+      <div className="grid md:grid-cols-3 grid-cols-2 items-center justify-center gap-4 px-4">
         {data &&
           filterCategor(data, category).map((item, id) => {
             return (

@@ -26,32 +26,37 @@ function ZakazaProduct() {
         </Link>
       </div>
 
-      <div className="grid md:grid-cols-3 grid-cols-2 items-center justify-center gap-10">
+      <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 items-center justify-center gap-4">
         {data &&
           data.map((item) => (
             <button
               key={item.id}
               onClick={() => setModalData(item)}
-              className="card bg-base-200 rounded-2xl glass py-5 w-full shadow-sm"
+              className={`card bg-base-200 rounded-2xl glass py-5 w-full shadow-sm  ${
+                item.status == "Yangi" && "bg-red-300"
+              }
+              ${item.status == "Bog'landik" && "bg-yellow-200"}
+               ${item.status == "Yuborildi" && "bg-green-300"}
+                ${item.status == "Bekor qilindi" && "bg-gray-500"} `}
             >
-              <figure className="flex pl-5 items-start w-full justify-start gap-5 flex-wrap">
+              <figure className="flex pl-5 items-start w-full justify-start gap-5 flex-wrap ">
                 {item.products.map((img) => (
                   <img
                     key={img.id}
-                    className="md:size-16 size-10 border"
+                    className="md:size-16 size-10 border "
                     src={img.img}
                     alt=""
                   />
                 ))}
               </figure>
               <div className="md:text-sm text-xs flex flex-col gap-1 px-5 pt-2">
-                <div className="flex items-center gap-2">
-                  <h2 className="card-title">{item.name}</h2>
-                  <p>({item.phone})</p>
+                <div className="flex items-center text-base gap-2 flex-wrap">
+                  <h2 className="card-itle">{item.name}</h2>
+                  <p className="text-sm">({item.phone})</p>
                 </div>
-                <div className="flex justify-between">
+                <div className="flex justify-between flex-wrap gap-2">
                   <div className="badge badge-outline">
-                    {fromatPrice(item.totalPrice * 1000)} so'm
+                    {fromatPrice(item.totalPrice * 1000)}
                   </div>
                   <div
                     className={`badge badge-outline 

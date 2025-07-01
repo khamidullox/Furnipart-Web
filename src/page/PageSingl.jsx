@@ -16,7 +16,7 @@ function PageSingl() {
           &lt; Assosiy
         </Link>{" "}
       </div>
-      <div className="grid md:grid-cols-3 grid-cols-2 items-center justify-center gap-10 ">
+      <div className="grid md:grid-cols-3 grid-cols-2 items-center justify-center gap-4 ">
         {data &&
           filterCategor(data, idParams).map((item, id) => {
             return (

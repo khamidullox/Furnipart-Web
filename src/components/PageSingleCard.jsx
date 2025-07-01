@@ -4,7 +4,7 @@ import { fromatPrice } from "../app/format";
 function PageSingleCard({ item, id }) {
   return (
     <div
-      className={` md:text-xl text-xs card md:flex-row  bg-base-100  w-full lg:h-full h-full  md:p-5 p-2 ${
+      className={` md:text-sm text-xs card md:flex-row  bg-base-100  w-full lg:h-full h-full  md:p-5 p-2 ${
         item.amoutProduct <= 0 ? "  opacity-30  " : "hover:shadow-xl"
       } pb-2 shadow-sm items-center md:gap-5 gap-2  transition-shadow border-1 hover:border-amber-400 relative`}
     >
@@ -15,7 +15,7 @@ function PageSingleCard({ item, id }) {
         </div>
       </figure>
       <div className=" flex flex-col w-full gap-3 md:items-baseline items-center justify-center">
-        <h2 className="car-title md:text-xl  text-center">
+        <h2 className="car-title md:text-lg  text-center">
           {item.name}
           {item.sale && (
             <div className=" absolute right-0 top-0 badge bg-secondary-red text-white ml-2 text-xs discount-badge ">
@@ -23,13 +23,13 @@ function PageSingleCard({ item, id }) {
             </div>
           )}
         </h2>
-        <p className="md:text-sm opacity-80 text-center md:text-start">
+        <p className="md:text-sm opacity-80 text-center line-clamp-2 md:text-start">
           * {item.description}
         </p>
 
         <div className="card-action w-full flex lg:flex-row flex-col text-sm gap-2 md:items-end items-center justify-end">
           <div
-            className={`badg badg-outline ${
+            className={`badg badg-outline border p-0.5 rounded-lg py-1  ${
               item.sale && " decoration-1 line-through opacity-40 text-xs"
             }`}
           >
