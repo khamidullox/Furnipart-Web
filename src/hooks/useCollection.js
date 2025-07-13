@@ -83,9 +83,9 @@ export const useUpdate = () => {
 };
 
 export const useDelete = () => {
-  const deleteProduct = async (id) => {
+  const deleteProduct = async (id, collection = "products") => {
     try {
-      await deleteDoc(doc(db, "products", id));
+      await deleteDoc(doc(db, collection, id));
       toast.success("Mahsulot o‘chirildi");
     } catch (error) {
       toast.error("O‘chirishda xatolik yuz berdi");

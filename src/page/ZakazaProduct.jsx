@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useCollection } from "../hooks/useCollection";
+import { useCollection, useDelete } from "../hooks/useCollection";
 import { fromatPrice } from "../app/format";
 import { useState } from "react";
 import { doc, updateDoc } from "firebase/firestore";
@@ -8,6 +8,7 @@ import { db } from "../firebase/firebseConfig";
 function ZakazaProduct() {
   let { data } = useCollection("orders");
   const [modalData, setModalData] = useState(null);
+  const { deleteProduct } = useDelete(); // ✅ Хук удаления
 
   const handleStatusChange = async (newStatus) => {
     if (!modalData) return;
@@ -32,26 +33,30 @@ function ZakazaProduct() {
             <button
               key={item.id}
               onClick={() => setModalData(item)}
-              className={`card bg-base-200 rounded-2xl glass py-5 w-full shadow-sm  ${
-                item.status == "Yangi" && "bg-red-300"
-              }
-              ${item.status == "Bog'landik" && "bg-yellow-200"}
-               ${item.status == "Yuborildi" && "bg-green-300"}
-                ${item.status == "Bekor qilindi" && "bg-gray-500"} `}
+              className={`card bg-base-200 rounded-2xl py-5 w-full shadow-sm border-2
+               ${item.status === "Yangi" && "border-red-600"}
+               ${item.status === "Bog'landik" && "border-yellow-600"}
+               ${item.status === "Yuborildi" && "border-green-600"}
+               ${item.status === "Bekor qilindi" && "border-gray-700"}
+              `}
             >
-              <figure className="flex pl-5 items-start w-full justify-start gap-5 flex-wrap ">
+              <figure className="flex pl-5 items-start w-full justify-start gap-5 flex-wrap">
                 {item.products.map((img) => (
-                  <img
-                    key={img.id}
-                    className="md:size-16 size-10 border "
-                    src={img.img}
-                    alt=""
-                  />
+                  <div className="relative" key={img.id}>
+                    <img
+                      className="md:size-16 size-10 border"
+                      src={img.img}
+                      alt=""
+                    />
+                    <span className="absolute z-10 bottom-0 right-0 text-xs">
+                      {img.amoutCart}x
+                    </span>
+                  </div>
                 ))}
               </figure>
               <div className="md:text-sm text-xs flex flex-col gap-1 px-5 pt-2">
                 <div className="flex items-center text-base gap-2 flex-wrap">
-                  <h2 className="card-itle">{item.name}</h2>
+                  <h2 className="card-title">{item.name}</h2>
                   <p className="text-sm">({item.phone})</p>
                 </div>
                 <div className="flex justify-between flex-wrap gap-2">
@@ -59,12 +64,12 @@ function ZakazaProduct() {
                     {fromatPrice(item.totalPrice * 1000)}
                   </div>
                   <div
-                    className={`badge badge-outline 
-                      ${item.status == "Yangi" && "bg-red-500"}
-                    ${item.status == "Bog'landik" && "bg-amber-500"}
-                     ${item.status == "Yuborildi" && "bg-green-500"}
-                      ${item.status == "Bekor qilindi" && "bg-gray-800"}
-                      text-white`}
+                    className={`badge badge-outline text-white 
+                      ${item.status === "Yangi" && "bg-red-500"}
+                      ${item.status === "Bog'landik" && "bg-amber-500"}
+                      ${item.status === "Yuborildi" && "bg-green-500"}
+                      ${item.status === "Bekor qilindi" && "bg-gray-800"}
+                    `}
                   >
                     {item.status}
                   </div>
@@ -76,7 +81,7 @@ function ZakazaProduct() {
 
       {/* Modal */}
       {modalData && (
-        <dialog id="order_modal" className="modal modal-open" scroll="no">
+        <dialog id="order_modal" className="modal modal-open">
           <div className="modal-box max-w-2xl">
             <h3 className="font-bold text-lg mb-2">
               Buyurtmachi: {modalData.name}
@@ -87,7 +92,7 @@ function ZakazaProduct() {
               {modalData.products.map((item, i) => (
                 <div
                   key={i}
-                  className="border rounded-md p-2 flex flex-col items-center w-24"
+                  className="relative border rounded-md p-2 flex flex-col items-center w-24"
                 >
                   <img
                     src={item.img}
@@ -95,6 +100,9 @@ function ZakazaProduct() {
                     alt=""
                   />
                   <p className="text-xs text-center mt-1">{item.name}</p>
+                  <span className="absolute z-10 top-0 right-0 text-xs">
+                    {item.amoutCart}x
+                  </span>
                 </div>
               ))}
             </div>
@@ -120,6 +128,15 @@ function ZakazaProduct() {
             </div>
 
             <div className="modal-action">
+              <button
+                className="btn btn-error"
+                onClick={() => {
+                  deleteProduct(modalData.id, "orders");
+                  setModalData(null);
+                }}
+              >
+                O‘chirish
+              </button>
               <button onClick={() => setModalData(null)} className="btn">
                 Yopish
               </button>

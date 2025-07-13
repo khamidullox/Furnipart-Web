@@ -6,19 +6,18 @@ const dataFromLocalStore = () => {
   return {
     product: saved.product || [],
     ordersProduct: saved.ordersProduct || [],
+    amoutCart: 1,
   };
 };
 
-const initialState = dataFromLocalStore();
-
 export const cartSlice = createSlice({
   name: "cart",
-  initialState,
+  initialState: dataFromLocalStore,
   reducers: {
     addProduct: (state, { payload }) => {
       const exists = state.product.some((item) => item.id === payload.id);
       if (!exists) {
-        state.product.push(payload);
+        state.product.push({ ...payload, amoutCart: 1 });
         localStorage.setItem("cart", JSON.stringify(state));
       }
     },
@@ -26,6 +25,27 @@ export const cartSlice = createSlice({
     deleteProduct: (state, { payload }) => {
       state.product = state.product.filter((item) => item.id !== payload);
       localStorage.setItem("cart", JSON.stringify(state));
+    },
+
+    increaseQuantity: (state, { payload }) => {
+      const item = state.product.find((item) => item.id === payload);
+      if (item) {
+        item.amoutCart += 1;
+        localStorage.setItem("cart", JSON.stringify(state));
+      }
+    },
+
+    decreaseQuantity: (state, { payload }) => {
+      const itemIndex = state.product.findIndex((item) => item.id === payload);
+      if (itemIndex !== -1) {
+        const item = state.product[itemIndex];
+        if (item.amoutCart > 1) {
+          item.amoutCart -= 1;
+        } else {
+          state.product.splice(itemIndex, 1);
+        }
+        localStorage.setItem("cart", JSON.stringify(state));
+      }
     },
 
     ordersAddHistory: (state, { payload }) => {
@@ -36,7 +56,12 @@ export const cartSlice = createSlice({
   },
 });
 
-export const { addProduct, deleteProduct, ordersAddHistory } =
-  cartSlice.actions;
+export const {
+  addProduct,
+  deleteProduct,
+  ordersAddHistory,
+  increaseQuantity,
+  decreaseQuantity,
+} = cartSlice.actions;
 
 export default cartSlice.reducer;

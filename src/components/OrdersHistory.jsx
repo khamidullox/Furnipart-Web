@@ -8,7 +8,7 @@ function OrdersHistory() {
   console.log(ordersProducts);
   return (
     <>
-      <h3 className="pl-5 ">Buyurtmalar</h3>
+      <h3 className="pl-5 ">Buyurtmalar (Tarix)</h3>
       <div className="grid md:grid-cols-3 grid-cols-2 items-center justify-center gap-10">
         {ordersProducts.map((item, ID) => {
           return (
@@ -17,9 +17,14 @@ function OrdersHistory() {
               className="ard bg-bas-200 rounded-2xl glass bg-base-300 py-5 w-full shadow-sm opacity-70"
             >
               <figure className="flex pl-5 items- w-full justify-start gap-5 flex-wrap             ">
-                {item.products.map((img) => {
+                {item.products.map((img, id) => {
                   return (
-                    <img className="md:size-16 size-10" src={img.img} alt="" />
+                    <img
+                      key={id}
+                      className="md:size-16 size-10"
+                      src={img.img}
+                      alt=""
+                    />
                   );
                 })}
               </figure>
