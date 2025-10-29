@@ -182,5 +182,20 @@ export default {
       url: "balonlar",
       img: "https://scontent.ftas1-2.fna.fbcdn.net/v/t39.30808-6/520676398_122122399454893960_2775277421658642412_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=100&ccb=1-7&_nc_sid=127cfc&_nc_ohc=x_dEBlaEuk4Q7kNvwHtKB9z&_nc_oc=AdnDXd-1sn7tBw6CtfZffw3YZMrSNJ-qsMYLGWwDNzpnU5t2qz-dSFBTYqdrjhGpkvw&_nc_zt=23&_nc_ht=scontent.ftas1-2.fna&_nc_gid=bph-iWYHNeB1zE3-esi2HA&oh=00_AfRGvex45OAk-5FS8yH3UeQ8EvFi3U_J04Am7cdzF9mw3g&oe=6887B815",
     },
+    {
+      title: "Гардероб механизм ",
+      url: "garderob_mexanizmlar",
+      img: "https://scontent.ftas1-2.fna.fbcdn.net/v/t39.30808-6/520676398_122122399454893960_2775277421658642412_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=100&ccb=1-7&_nc_sid=127cfc&_nc_ohc=x_dEBlaEuk4Q7kNvwHtKB9z&_nc_oc=AdnDXd-1sn7tBw6CtfZffw3YZMrSNJ-qsMYLGWwDNzpnU5t2qz-dSFBTYqdrjhGpkvw&_nc_zt=23&_nc_ht=scontent.ftas1-2.fna&_nc_gid=bph-iWYHNeB1zE3-esi2HA&oh=00_AfRGvex45OAk-5FS8yH3UeQ8EvFi3U_J04Am7cdzF9mw3g&oe=6887B815",
+    },
+    {
+      title: "Ошхона механизм ",
+      url: "oshxona_mehanizm",
+      img: "https://scontent.ftas1-2.fna.fbcdn.net/v/t39.30808-6/520676398_122122399454893960_2775277421658642412_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=100&ccb=1-7&_nc_sid=127cfc&_nc_ohc=x_dEBlaEuk4Q7kNvwHtKB9z&_nc_oc=AdnDXd-1sn7tBw6CtfZffw3YZMrSNJ-qsMYLGWwDNzpnU5t2qz-dSFBTYqdrjhGpkvw&_nc_zt=23&_nc_ht=scontent.ftas1-2.fna&_nc_gid=bph-iWYHNeB1zE3-esi2HA&oh=00_AfRGvex45OAk-5FS8yH3UeQ8EvFi3U_J04Am7cdzF9mw3g&oe=6887B815",
+    },
+    {
+      title: "Moran model ",
+      url: "moran_model",
+      img: "https://scontent.ftas1-2.fna.fbcdn.net/v/t39.30808-6/520676398_122122399454893960_2775277421658642412_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=100&ccb=1-7&_nc_sid=127cfc&_nc_ohc=x_dEBlaEuk4Q7kNvwHtKB9z&_nc_oc=AdnDXd-1sn7tBw6CtfZffw3YZMrSNJ-qsMYLGWwDNzpnU5t2qz-dSFBTYqdrjhGpkvw&_nc_zt=23&_nc_ht=scontent.ftas1-2.fna&_nc_gid=bph-iWYHNeB1zE3-esi2HA&oh=00_AfRGvex45OAk-5FS8yH3UeQ8EvFi3U_J04Am7cdzF9mw3g&oe=6887B815",
+    },
   ],
 };
